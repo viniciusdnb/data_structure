@@ -1,20 +1,20 @@
 <?php
 
+include "InterfaceConsole.php";
 
-abstract class Console
+abstract class Console implements InterfaceConsole
 {
     public array $inputStr = [];
-      
-    
 
-    function startConsole()
+    function startConsole():void
     {
-        
+
         $this->presentation();
         $i = 0;
 
         while (true) {
-            $str = rtrim(readline(">"));
+            //var_dump($this->inputStr);
+            $str = trim(readline(">"), " ");
             if (!is_numeric($str)) {
                 $this->inputStr[$i] = $str;
             }
@@ -25,7 +25,6 @@ abstract class Console
                 break;
             }
 
-           
             foreach ($this->arrOptions as $key => $value) {
                 if ($key == $str) {
                     $this->$value();
@@ -33,14 +32,6 @@ abstract class Console
             }
         }
     }
-
-    function presentation()
-    {
-        echo "----------- STACK OF BOOKS --------------- \n";
-        echo "TYPE BOOK NAME AND ENTER OR MENU OPTION\n";
-        foreach($this->menu as $value){
-            echo $value . "\n";
-        }
-    }
-    
 }
+
+

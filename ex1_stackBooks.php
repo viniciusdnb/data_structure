@@ -1,7 +1,7 @@
 <?php
 
-include "Console.php";
 
+include "Console.php";
 
 
 class Ex1_stackBooks extends Console
@@ -46,7 +46,7 @@ class Ex1_stackBooks extends Console
     }
        
 
-    private function setMenu():void
+    public function setMenu():void
     {
         $this->menu = [
             0 => "0. exit",
@@ -54,9 +54,16 @@ class Ex1_stackBooks extends Console
             2 => "2. remove element",
         ];
     }
+
+    public function presentation():void
+    {
+        echo "----------- STACK OF BOOKS --------------- \n";
+        echo "TYPE BOOK NAME AND ENTER OR MENU OPTION\n";
+        foreach($this->menu as $value){
+            echo $value . "\n";
+        }
+    }
 }
 
+
 $ex = new Ex1_stackBooks();
-//$ex->print();
-//$ex->pushStackBooksPair(10, "harry");
-//$ex->pushStackBooksPair(2, "odisseia");
